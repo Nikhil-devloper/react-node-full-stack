@@ -1,0 +1,5 @@
+var localtunnel = require('localtunnel');
+  console.log('I reached');
+localtunnel(5000, { subdomain: 'nik647developer' }, function(err, tunnel) {
+  console.log('LT running')
+});

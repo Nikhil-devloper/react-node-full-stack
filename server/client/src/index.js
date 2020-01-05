@@ -1,0 +1,23 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import App from './component/App';
+import 'materialize-css/dist/css/materialize.min.css';
+import reduxThunk from 'redux-thunk';
+import reducer from './reducers';
+import axios from 'axios';
+
+window.axios = axios;
+
+const store = createStore(reducer, {}, applyMiddleware(reduxThunk));
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.querySelector('#root')
+);
+
+console.log('React Stripe Key',process.env.REACT_APP_STRIPE_KEY);
+console.log('Envirnment --> ',process.env.NODE_ENV);
